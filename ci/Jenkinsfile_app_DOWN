@@ -1,0 +1,29 @@
+pipeline {
+    agent {
+        node {
+            label 'built-in'
+            customWorkspace '/home/jenkins/workspace/ops_pro'
+        }
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Stop Application Services') {
+            steps {
+                sh 'ansible-playbook ci/ansible/teardown-app.yml -i ci/ansible/inventory'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '🛑 Application services stopped (observability still running)'
+        }
+        failure {
+            echo '❌ Failed to stop application services'
+        }
+    }
+}

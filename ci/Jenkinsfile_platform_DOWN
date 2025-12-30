@@ -1,0 +1,29 @@
+pipeline {
+    agent {
+        node {
+            label 'built-in'
+            customWorkspace '/home/jenkins/workspace/ops_pro'
+        }
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Stop Observerability Services') {
+            steps {
+                sh 'ansible-playbook ci/ansible/teardown-platform.yml -i ci/ansible/inventory'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '🛑 Observerability services stopped'
+        }
+        failure {
+            echo '❌ Failed to stop observerability services'
+        }
+    }
+}

@@ -32,7 +32,7 @@ pipeline {
 
         stage('Deploy via Ansible') {
             steps {
-                sh 'ansible-playbook ci/ansible/deploy.yml -i ci/ansible/inventory'
+                sh 'ansible-playbook ci/ansible/deploy-app.yml -i ci/ansible/inventory'
             }
         }
 

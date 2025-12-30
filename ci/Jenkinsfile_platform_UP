@@ -1,0 +1,29 @@
+pipeline {
+    agent {
+        node {
+            label 'built-in'
+            customWorkspace '/home/jenkins/workspace/ops_pro'
+        }
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+        stage('Deploy via Ansible') {
+            steps {
+                sh 'ansible-playbook ci/ansible/deploy-platform.yml -i ci/ansible/inventory'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Deployment successful'
+        }
+        failure {
+            echo '❌ Deployment failed'
+        }
+    }
+}
