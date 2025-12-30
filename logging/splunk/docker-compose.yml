@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  splunk:
+    image: splunk/splunk:9.2
+    container_name: splunk
+    environment:
+      SPLUNK_GENERAL_TERMS: "--accept-sgt-current-at-splunk-com"
+      SPLUNK_START_ARGS: "--accept-license --answer-yes"
+      SPLUNK_PASSWORD: "admin@123"
+      SPLUNK_HEC_ENABLE: "true"
+      SPLUNK_HEC_TOKEN: "be4ce942-dd5c-4091-9761-5fad41e59a48"
+    ports:
+      - "8002:8000" # splunk ui
+      - "8088:8088" # HEC
+    networks:
+      - cashflow-network
+
+networks:
+  cashflow-network:
+    external: true

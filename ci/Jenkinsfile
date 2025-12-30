@@ -1,0 +1,57 @@
+pipeline {
+    agent {
+        node {
+            label 'built-in'
+            customWorkspace '/home/jenkins/workspace/ops_pro'
+        }
+    }
+
+    options {
+        timestamps()
+    }
+
+    stages {
+
+        stage('Build Backend') {
+            steps {
+                dir('app/server') {
+                    sh 'docker build -t cashflow-backend:1.0 .'
+                }
+                echo "Backend image created"
+            }
+        }
+
+        stage('Build Frontend') {
+            steps {
+                dir('app/client') {
+                    sh 'docker build -t cashflow-frontend:1.0 .'
+                }
+                echo "Frontend image created"
+            }
+        }
+
+        stage('Deploy via Ansible') {
+            steps {
+                sh 'ansible-playbook ci/ansible/deploy.yml -i ci/ansible/inventory'
+            }
+        }
+
+        stage('Health Check (Gateway)') {
+            steps {
+                sh '''
+                  sleep 15
+                  curl -f http://localhost:8000/api/health
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Deployment successful'
+        }
+        failure {
+            echo '❌ Deployment failed'
+        }
+    }
+}

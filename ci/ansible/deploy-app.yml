@@ -1,0 +1,19 @@
+- name: Deploy CashFlow Application
+  hosts: local
+  become: false
+
+  tasks:
+    - name: Check Docker is running
+      command: docker info
+      register: docker_status
+      failed_when: docker_status.rc != 0
+
+    - name: Deploy application stack
+      shell: docker compose up -d
+      args:
+        chdir: /home/jenkins/workspace/ops_pro/docker
+
+    - name: Deploy Gateway
+      shell: docker compose up -d
+      args:
+        chdir: /home/jenkins/workspace/ops_pro/gateway/kong

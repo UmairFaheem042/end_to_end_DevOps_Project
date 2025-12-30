@@ -1,0 +1,19 @@
+- name: Deploy Observability Stack
+  hosts: local
+  become: false
+
+  tasks:
+    - name: Check Docker is running
+      command: docker info
+      register: docker_status
+      failed_when: docker_status.rc != 0
+      
+    - name: Deploy Monitoring
+      shell: docker compose up -d
+      args:
+        chdir: /home/jenkins/workspace/ops_pro/monitoring
+
+    - name: Deploy Logging (Splunk)
+      shell: docker compose up -d
+      args:
+        chdir: /home/jenkins/workspace/ops_pro/logging/splunk

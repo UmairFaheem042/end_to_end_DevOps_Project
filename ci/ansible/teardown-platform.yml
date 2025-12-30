@@ -1,0 +1,14 @@
+- name: Stop Observability Stack
+  hosts: local
+  become: false
+
+  tasks:
+    - name: Stop Monitoring
+      shell: docker compose stop
+      args:
+        chdir: /home/jenkins/workspace/ops_pro/monitoring
+
+    - name: Stop Logging (Splunk)
+      shell: docker compose stop
+      args:
+        chdir: /home/jenkins/workspace/ops_pro/logging/splunk

@@ -1,0 +1,14 @@
+- name: Stop CashFlow Application
+  hosts: local
+  become: false
+
+  tasks:
+    - name: Stop application stack
+      shell: docker compose stop
+      args:
+        chdir: /home/jenkins/workspace/ops_pro/docker
+
+    - name: Stop Gateway
+      shell: docker compose stop
+      args:
+        chdir: /home/jenkins/workspace/ops_pro/gateway/kong

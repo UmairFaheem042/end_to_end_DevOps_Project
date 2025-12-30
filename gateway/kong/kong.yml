@@ -1,0 +1,20 @@
+_format_version: "3.0"
+
+services:
+  - name: cashflow-backend
+    url: http://cashflow-backend:3000
+    routes:
+      - name: api-route
+        paths:
+          - /
+        strip_path: false
+
+      - name: health-route
+        paths:
+          - /health
+        strip_path: false
+
+      - name: metrics-route
+        paths:
+          - /metrics
+        strip_path: false
