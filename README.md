@@ -70,10 +70,9 @@ This table shows how common enterprise tools map to the alternatives used in thi
     CashFlow/
     │
     ├── app/                         # Application source code
-    │   ├── backend/                 # Backend service (Node.js + Express)
+    │   ├── server/                  # Backend service (Node.js + Express)
     │   │   ├── Dockerfile           # Backend Docker image
-    │   │   ├── src/                 # Backend source code
-    │   │   └── logger/              # Centralized logging
+    │   │   ├── logger/              # Centralized logging
     │   │       └── splunkLogger.js  # Winston → Splunk HEC integration
     │   │
     │   └── client/                  # Frontend application (React)
