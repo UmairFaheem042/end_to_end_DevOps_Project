@@ -64,6 +64,12 @@ This table shows how common enterprise tools map to the alternatives used in thi
 
 ---
 
+## Architecture
+<img width="1317" height="945" alt="end_to_end_ops" src="https://github.com/user-attachments/assets/b3bd3570-a976-4271-9624-9db5e609f6fa" />
+
+
+---
+
 ## Folder Structure
 
 ```text
