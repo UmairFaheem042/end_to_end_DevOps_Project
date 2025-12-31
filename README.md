@@ -4,9 +4,7 @@
 
 CashFlow is a **hands-on DevOps / OPS engineering project** focused on applying real-world operational practices to an existing application using open-source tools.
 
-I build this project to gain practical exposure to enterprise-style OPS and DevOps workflows. Since access to production systems and licensed enterprise platforms is usually restricted, I recreate similar patterns using open-source technologies that reflect how large organizations deploy, monitor, and operate services.
-
-The emphasis of this project is not on building a new application, but on **how an existing service is operationalized**—from deployment and automation to observability and lifecycle management.
+I build this project to practice enterprise-style OPS and DevOps workflows by treating an application as a running business service and evolving it operationally. The emphasis is not on building new features, but on **how an existing service is deployed, automated, observed, and managed throughout its lifecycle**.
 
 This project demonstrates:
 
@@ -17,11 +15,15 @@ This project demonstrates:
 - Practical operational problem-solving
 
 > **Project Context:**  
-> CashFlow starts as a standalone MERN application developed by me earlier.  
+> CashFlow starts as a standalone MERN application developed by me earlier.
 >
 > In this project, I reuse that application and focus on **layering enterprise-style OPS / DevOps capabilities on top of it**, including CI/CD pipelines, API gateway integration, centralized logging, monitoring, and controlled service lifecycles.
 >
-> This approach mirrors real-world environments where DevOps engineers typically inherit running services and evolve them operationally rather than building systems from scratch.
+> This mirrors real-world environments where DevOps engineers typically inherit existing services and evolve them operationally rather than building systems from scratch.
+
+> **Enterprise Exposure Context:**  
+> While working alongside an Oracle OPS team as an intern, I observe real enterprise operational workflows but have limited hands-on access to production systems and licensed tools.  
+> To bridge this gap, I recreate similar workflows using open-source alternatives, allowing me to practice deployment, observability, automation, and service operations in a realistic environment.
 
 ---
 
